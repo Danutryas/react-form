@@ -4,7 +4,7 @@ import "./header.css";
 
 function HeaderForm() {
   return (
-    <div className="form-header">
+    <div className="header">
       <ul>
         <li>
           <HeaderBuilder linkTo={"/v1"} name="V1" />

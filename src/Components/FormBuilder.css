@@ -1,15 +1,11 @@
-.form {
+.container {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
+  width: 100%;
+  align-items: center;
 }
 .title {
   text-align: center;
   margin-top: 40px;
-}
-.form-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }

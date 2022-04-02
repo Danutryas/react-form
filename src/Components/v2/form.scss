@@ -1,0 +1,315 @@
+@mixin layout {
+  display: grid;
+  width: 600px;
+  grid-template: 120px 120px / 285px 285px;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// progress-bar
+.circle {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #eff0f6;
+  border-radius: 50%;
+  font-size: 16px;
+  color: #6f6c90;
+}
+.selected .circle {
+  background-color: #4a3aff;
+  border: 1px solid #4a3aff;
+  color: #f2f2f2;
+}
+.progress-bar {
+  display: flex;
+}
+.progress-step {
+  padding: 0 65px;
+  position: relative;
+}
+.progress-bar > .progress-step:not(:last-child)::after {
+  content: "";
+  width: 50px;
+  height: 6px;
+  left: 110px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #eff0f6;
+  z-index: -1;
+  border-radius: 4px;
+  border-radius: 3px 0 0 3px;
+}
+.progress-bar > .progress-step:not(:first-child)::before {
+  content: "";
+  width: 50px;
+  height: 6px;
+  right: 110px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #eff0f6;
+  z-index: -1;
+  border-radius: 0 3px 3px 0;
+}
+.progress-bar > .selected:not(:last-child)::after {
+  background-color: #4a3aff;
+  border-radius: 3px 0 0 3px;
+}
+.progress-bar > .selected:not(:first-child)::before {
+  background-color: #4a3aff;
+  border-radius: 0 3px 3px 0;
+}
+//content
+//container
+.form-card {
+  .progress-bar {
+    height: 100px;
+    // padding-bottom: 30px;
+    border-bottom: 1px solid #d9dbe9;
+    margin-bottom: 30px;
+    .progress-step {
+      margin: auto;
+    }
+  }
+}
+
+.form-card {
+  @include flex-column();
+  width: 700px;
+  height: 700px;
+  gap: 0;
+  justify-content: space-between;
+  border: 1px solid #080f340f;
+  padding: 10px 50px 30px;
+  border-radius: 35px;
+  box-shadow: 0 5px 16px 0 #080f340f;
+  position: relative;
+  .form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 7.5px;
+    margin-bottom: 40px;
+
+    .card-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 35px;
+      color: #170f49;
+    }
+    .info {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 30px;
+      color: #6f6c90;
+    }
+  }
+  .contact-step {
+    .form {
+      @include layout();
+
+      .info-title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 20px;
+      }
+      .input-field {
+        height: 66px;
+        width: 285px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #eff0f6;
+        padding: 0 20px;
+        align-items: center;
+        border-radius: 40px;
+        box-shadow: 0 2px 6px 0 rgba(#131242, 0.07);
+        input {
+          border: none;
+          outline: none;
+          height: 100%;
+          width: 200px;
+          font-size: 18px;
+          line-height: 20px;
+          color: #6f6c90;
+          &:focus {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            color: #514f6e;
+          }
+        }
+      }
+      .info {
+        &-name {
+          @include flex-column();
+        }
+        &-mail {
+          @include flex-column();
+        }
+        &-number {
+          @include flex-column();
+        }
+        &-company {
+          @include flex-column();
+        }
+      }
+    }
+  }
+  .budget-step {
+    .form {
+      @include layout();
+      .budget {
+        height: 120px;
+        width: 285px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 0 25px;
+        border-radius: 15px;
+        border: 2px solid #eff0f6;
+        box-shadow: 0 2px 6px 0 rgba($color: #131242, $alpha: 0.07);
+        cursor: pointer;
+        &.checked {
+          border: 2px solid #4a3aff;
+        }
+        cursor: pointer;
+        input {
+          -webkit-appearance: none;
+          width: 25px;
+          height: 25px;
+          border: 1px solid #d9dbe9;
+          outline: none;
+          background-color: #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 -3px 7px 0 rgba($color: #14142b, $alpha: 0.08) inset;
+          &:checked {
+            width: 25px;
+            height: 25px;
+            border: 7px solid #4a3aff;
+            outline: none;
+          }
+        }
+        label {
+          cursor: pointer;
+          font-size: 18px;
+          line-height: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .service-step {
+    .form {
+      @include layout();
+      .service {
+        height: 120px;
+        width: 285px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 25px;
+        border-radius: 15px;
+        border: 2px solid #eff0f6;
+        box-shadow: 0 2px 6px 0 rgba($color: #131242, $alpha: 0.07);
+        cursor: pointer;
+        &.active {
+          border: 2px solid #4a3aff;
+        }
+
+        .icon-circle {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 65px;
+          height: 65px;
+          border-radius: 50%;
+          background-color: rgba(#4a3aff, 0.15);
+        }
+        .service-name {
+          font-size: 18px;
+          line-height: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .submit-step {
+    @include flex-column();
+    align-items: center;
+    gap: 0;
+    .form-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      .info {
+        width: 500px;
+        font-size: 18px;
+      }
+      .complete-image {
+        width: auto;
+        height: auto;
+      }
+    }
+    .submit-button {
+      height: 60px;
+      width: 140px;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      background-color: #4a3aff;
+      color: white;
+      border-radius: 50px;
+    }
+  }
+  .button-handler {
+    height: 60px;
+    position: relative;
+
+    .next-button {
+      height: 60px;
+      width: 140px;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      background-color: #4a3aff;
+      color: white;
+      border-radius: 50px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .prev-button {
+      height: 60px;
+      width: 165px;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 400;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      border: 1px solid #4a3aff;
+      color: #4a3aff;
+      border-radius: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
